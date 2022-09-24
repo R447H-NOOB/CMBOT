@@ -166,7 +166,7 @@ class ParallelTransferrer:
 
     @staticmethod
     def _get_connection_count(
-        file_size: int, max_count: int = 100, full_size: int = 80 * 1024 * 1024
+        file_size: int, max_count: int = 10, full_size: int = 80 * 1024 * 1024
     ) -> int:
         if file_size > full_size:
             return max_count
@@ -277,7 +277,7 @@ class ParallelTransferrer:
         connection_count = connection_count or self._get_connection_count(file_size)
         part_size = (part_size_kb or utils.get_appropriated_part_size(file_size)) * 1024
         part_count = (file_size + part_size - 1) // part_size
-        is_large = file_size > 100 * 1024 * 1024
+        is_large = file_size > 10 * 1024 * 1024
         await self._init_upload(connection_count, file_id, part_count, is_large)
         return part_size, part_count, is_large
 
