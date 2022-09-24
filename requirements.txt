@@ -2,4 +2,5 @@ aiohttp
 python-decouple
 pyaesni
 Telethon
+html_telegraph_poster
 requests
